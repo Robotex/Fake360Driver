@@ -1,10 +1,11 @@
 # Xbox Controller Driver for macOS
 
 ## Status
-It's a work-in-progress, currently it produces a Fake360Test executable that enables the controller to report its input and displays it to console for debugging purposes.
+Work-in-progress, currently it produces a Fake360Test executable that enables the controller to report its input and displays it to console for debugging purposes.
+The executable is also a proof of concept, it creates a working virtual device that relays the actions from the real device.
 
 ## About
-Fake360Driver is an another Xbox 360 controller driver which operates in userland similar to xboxdrv, allowing me to use it on OSX without the requirement to codesign it.
+Fake360Driver is an another Xbox 360 controller driver which operates in userland similar to xboxdrv on linux, allowing me to use it on OSX without the requirement to codesign it.
 This project was started after my [issue](https://github.com/360Controller/360Controller/issues/384) with the 360Controller driver was closed down without a fix and without finding any working alternative.
 
 The Xbox360 Controller I own is a clone bought from Taobao labeled PC188 and is advertised as PC/XBOX360 compatible.
@@ -26,8 +27,11 @@ Controller:
 
 I'm using this also as an opportunity to learn CMake.
 
+## Requirements
+* foohid ([download link](https://github.com/unbit/foohid/releases/download/0.2.1/foohid-0.2.1.dmg))
+
 ## Usage
 ```
 cd build/
-cmake -G Xcode .. # On OSX
+cmake -G Xcode .. # On OSX - open the produced project and build it
 ```

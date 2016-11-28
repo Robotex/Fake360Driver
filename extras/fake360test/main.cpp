@@ -10,8 +10,10 @@
 #include <csignal>
 #include <libusb-1.0/libusb.h>
 #include "Xbox360ControllerInputReport.hpp"
+#include "Fake360Controller.hpp"
 
 bool g_isAborted = false;
+Fake360Controller fakeController;
 
 // SIGINT handler
 void int_handler(int x)
@@ -36,6 +38,7 @@ void on_read_data(libusb_transfer *transfer)
             printf("   Left Analog (X,Y): (%d,%d)\n", msg.x1, msg.y1);
             printf("   Right Analog (X,Y): (%d,%d)\n", msg.x2, msg.y2);
         }
+        fakeController.Send(msg);
     }
     else
         std::cout << "Error reading device\n";
